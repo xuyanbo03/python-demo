@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>13.estimator_premade</title>
+<title>14.tf1_api</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13077,7 +13077,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator&#22788;&#29702;titanic&#38382;&#39064;">&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator&#22788;&#29702;titanic&#38382;&#39064;<a class="anchor-link" href="#&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator&#22788;&#29702;titanic&#38382;&#39064;">&#182;</a></h1>
+<h1 id="TensorFlow-1.0-API&#20351;&#29992;">TensorFlow 1.0 API&#20351;&#29992;<a class="anchor-link" href="#TensorFlow-1.0-API&#20351;&#29992;">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -13097,7 +13097,7 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="k">import</span> <span class="n">keras</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">)</span>
@@ -13119,58 +13119,14 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2.0.0
-sys.version_info(major=3, minor=6, micro=10, releaselevel=&#39;final&#39;, serial=0)
-matplotlib 3.1.2
-numpy 1.18.1
-pandas 0.25.3
+<pre>1.13.1
+sys.version_info(major=3, minor=6, micro=8, releaselevel=&#39;final&#39;, serial=0)
+matplotlib 3.1.3
+numpy 1.16.4
+pandas 0.24.2
 sklearn 0.22.1
-tensorflow 2.0.0
-tensorflow_core.keras 2.2.4-tf
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">solve_cudnn_error</span><span class="p">():</span>
-    <span class="n">gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s1">&#39;GPU&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">gpus</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="c1"># Currently, memory growth needs to be the same across GPUs</span>
-            <span class="k">for</span> <span class="n">gpu</span> <span class="ow">in</span> <span class="n">gpus</span><span class="p">:</span>
-                <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">set_memory_growth</span><span class="p">(</span><span class="n">gpu</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-            <span class="n">logical_gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">list_logical_devices</span><span class="p">(</span><span class="s1">&#39;GPU&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gpus</span><span class="p">),</span> <span class="s2">&quot;Physical GPUs,&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">logical_gpus</span><span class="p">),</span> <span class="s2">&quot;Logical GPUs&quot;</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="c1"># Memory growth must be set before GPUs have been initialized</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-
-<span class="n">solve_cudnn_error</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1 Physical GPUs, 1 Logical GPUs
+tensorflow 1.13.1
+tensorflow._api.v1.keras 2.2.4-tf
 </pre>
 </div>
 </div>
@@ -13182,23 +13138,24 @@ tensorflow_core.keras 2.2.4-tf
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#35835;&#21462;&#25968;&#25454;&#65292;&#26500;&#24314;&#25968;&#25454;&#38598;">&#35835;&#21462;&#25968;&#25454;&#65292;&#26500;&#24314;&#25968;&#25454;&#38598;<a class="anchor-link" href="#&#35835;&#21462;&#25968;&#25454;&#65292;&#26500;&#24314;&#25968;&#25454;&#38598;">&#182;</a></h2>
+<h2 id="&#25968;&#25454;&#35835;&#21462;--fashion_mnist">&#25968;&#25454;&#35835;&#21462;--fashion_mnist<a class="anchor-link" href="#&#25968;&#25454;&#35835;&#21462;--fashion_mnist">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_file</span> <span class="o">=</span> <span class="s1">&#39;data/titanic/train.csv&#39;</span>
-<span class="n">eval_file</span> <span class="o">=</span> <span class="s1">&#39;data/titanic/eval.csv&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 导入数据集fashion mnist</span>
+<span class="n">fashion_mnist</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span>
+<span class="p">(</span><span class="n">x_train_all</span><span class="p">,</span><span class="n">y_train_all</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">fashion_mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">x_valid</span><span class="p">,</span><span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train_all</span><span class="p">[:</span><span class="mi">5000</span><span class="p">],</span><span class="n">x_train_all</span><span class="p">[</span><span class="mi">5000</span><span class="p">:]</span>
+<span class="n">y_valid</span><span class="p">,</span><span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_all</span><span class="p">[:</span><span class="mi">5000</span><span class="p">],</span><span class="n">y_train_all</span><span class="p">[</span><span class="mi">5000</span><span class="p">:]</span>
 
-<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span>
-<span class="n">eval_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">eval_file</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eval_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13215,162 +13172,9 @@ tensorflow_core.keras 2.2.4-tf
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>   survived     sex   age  n_siblings_spouses  parch     fare  class     deck  \
-0         0    male  22.0                   1      0   7.2500  Third  unknown   
-1         1  female  38.0                   1      0  71.2833  First        C   
-2         1  female  26.0                   0      0   7.9250  Third  unknown   
-3         1  female  35.0                   1      0  53.1000  First        C   
-4         0    male  28.0                   0      0   8.4583  Third  unknown   
-
-   embark_town alone  
-0  Southampton     n  
-1    Cherbourg     n  
-2  Southampton     y  
-3  Southampton     n  
-4   Queenstown     y  
-   survived     sex   age  n_siblings_spouses  parch     fare   class  \
-0         0    male  35.0                   0      0   8.0500   Third   
-1         0    male  54.0                   0      0  51.8625   First   
-2         1  female  58.0                   0      0  26.5500   First   
-3         1  female  55.0                   0      0  16.0000  Second   
-4         1    male  34.0                   0      0  13.0000  Second   
-
-      deck  embark_town alone  
-0  unknown  Southampton     y  
-1        E  Southampton     y  
-2        C  Southampton     y  
-3  unknown  Southampton     y  
-4        D  Southampton     y  
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 将survived字段取出，赋给label</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
-<span class="n">y_eval</span> <span class="o">=</span> <span class="n">eval_df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eval_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y_eval</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>      sex   age  n_siblings_spouses  parch     fare  class     deck  \
-0    male  22.0                   1      0   7.2500  Third  unknown   
-1  female  38.0                   1      0  71.2833  First        C   
-2  female  26.0                   0      0   7.9250  Third  unknown   
-3  female  35.0                   1      0  53.1000  First        C   
-4    male  28.0                   0      0   8.4583  Third  unknown   
-
-   embark_town alone  
-0  Southampton     n  
-1    Cherbourg     n  
-2  Southampton     y  
-3  Southampton     n  
-4   Queenstown     y  
-      sex   age  n_siblings_spouses  parch     fare   class     deck  \
-0    male  35.0                   0      0   8.0500   Third  unknown   
-1    male  54.0                   0      0  51.8625   First        E   
-2  female  58.0                   0      0  26.5500   First        C   
-3  female  55.0                   0      0  16.0000  Second  unknown   
-4    male  34.0                   0      0  13.0000  Second        D   
-
-   embark_town alone  
-0  Southampton     y  
-1  Southampton     y  
-2  Southampton     y  
-3  Southampton     y  
-4  Southampton     y  
-0    0
-1    1
-2    1
-3    1
-4    0
-Name: survived, dtype: int64
-0    0
-1    0
-2    1
-3    1
-4    1
-Name: survived, dtype: int64
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 将数据分成两类：离散和连续</span>
-<span class="n">categorical_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;n_siblings_spouses&#39;</span><span class="p">,</span> <span class="s1">&#39;parch&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span>
-                       <span class="s1">&#39;deck&#39;</span><span class="p">,</span> <span class="s1">&#39;embark_town&#39;</span><span class="p">,</span> <span class="s1">&#39;alone&#39;</span><span class="p">]</span>
-<span class="n">numeric_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;fare&#39;</span><span class="p">]</span>
-
-<span class="n">feature_columns</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">categorical_column</span> <span class="ow">in</span> <span class="n">categorical_columns</span><span class="p">:</span>
-    <span class="c1"># 获取离散值所有可能值</span>
-    <span class="n">vocab</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">categorical_column</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">categorical_column</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
-    <span class="c1"># 对离散值封装，做onehot编码，再加入feature_columns中</span>
-    <span class="n">feature_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">indicator_column</span><span class="p">(</span>
-            <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">categorical_column_with_vocabulary_list</span><span class="p">(</span>
-                <span class="n">categorical_column</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)))</span>
-    
-<span class="k">for</span> <span class="n">numeric_column</span> <span class="ow">in</span> <span class="n">numeric_columns</span><span class="p">:</span>
-    <span class="n">feature_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">numeric_column</span><span class="p">(</span><span class="n">numeric_column</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>sex [&#39;male&#39; &#39;female&#39;]
-n_siblings_spouses [1 0 3 4 2 5 8]
-parch [0 1 2 5 3 4]
-class [&#39;Third&#39; &#39;First&#39; &#39;Second&#39;]
-deck [&#39;unknown&#39; &#39;C&#39; &#39;G&#39; &#39;A&#39; &#39;B&#39; &#39;D&#39; &#39;F&#39; &#39;E&#39;]
-embark_town [&#39;Southampton&#39; &#39;Cherbourg&#39; &#39;Queenstown&#39; &#39;unknown&#39;]
-alone [&#39;n&#39; &#39;y&#39;]
+<pre>(5000, 28, 28) (5000,)
+(55000, 28, 28) (55000,)
+(10000, 28, 28) (10000,)
 </pre>
 </div>
 </div>
@@ -13384,72 +13188,127 @@ alone [&#39;n&#39; &#39;y&#39;]
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 从pandas dataframe中构建dataset</span>
-<span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">label_df</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span><span class="p">):</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="nb">dict</span><span class="p">(</span><span class="n">data_df</span><span class="p">),</span> <span class="n">label_df</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
-        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">dataset</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 数据归一化</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">StandardScaler</span>
 
-<span class="k">def</span> <span class="nf">make_input_fn</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">label_df</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">input_fn</span><span class="p">():</span>
-        <span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="nb">dict</span><span class="p">(</span><span class="n">data_df</span><span class="p">),</span> <span class="n">label_df</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
-            <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">dataset</span>
-    <span class="k">return</span> <span class="n">input_fn</span>
-
-<span class="n">train_input_fn</span> <span class="o">=</span> <span class="n">make_input_fn</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">eval_input_fn</span> <span class="o">=</span> <span class="n">make_input_fn</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">x_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span>
+    <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">x_valid_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+    <span class="n">x_valid</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">x_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+    <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator">&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator<a class="anchor-link" href="#&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator">&#182;</a></h2><h3 id="BaseLine-Estimator">BaseLine Estimator<a class="anchor-link" href="#BaseLine-Estimator">&#182;</a></h3>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import shutil</span>
-<span class="c1"># # 定义文件夹，保存输出的模型</span>
-<span class="c1"># output_dir = &#39;baseline_model&#39;</span>
-<span class="c1"># if not os.path.exists(output_dir):</span>
-<span class="c1">#     os.mkdir(output_dir)</span>
-<span class="c1"># else:</span>
-<span class="c1">#     shutil.rmtree(output_dir)</span>
-<span class="c1">#     os.mkdir(output_dir)</span>
-    
-<span class="c1"># baseline_estimator = tf.estimator.BaselineClassifier(</span>
-<span class="c1">#     model_dir=output_dir, n_classes=2)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">))</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2.0231433 -0.8105136
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#35745;&#31639;&#22270;&#26500;&#24314;--&#23454;&#29616;&#20840;&#36830;&#25509;&#32593;&#32476;">&#35745;&#31639;&#22270;&#26500;&#24314;--&#23454;&#29616;&#20840;&#36830;&#25509;&#32593;&#32476;<a class="anchor-link" href="#&#35745;&#31639;&#22270;&#26500;&#24314;--&#23454;&#29616;&#20840;&#36830;&#25509;&#32593;&#32476;">&#182;</a></h2><p>使用基础的语法，实现图像分类的例子</p>
+<p>先构建图，再传入数据，要用占位符来顶替数据的位置</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># baseline_estimator.train(</span>
-<span class="c1">#     input_fn=lambda : make_dataset(train_df, y_train, epochs=100))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hidden_units</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">class_num</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># 占位符，顶替数据位置</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])</span>
+
+<span class="c1"># 定义输入层</span>
+<span class="n">input_for_next_layer</span> <span class="o">=</span> <span class="n">x</span>
+<span class="c1"># 定义隐藏层</span>
+<span class="k">for</span> <span class="n">hidden_unit</span> <span class="ow">in</span> <span class="n">hidden_units</span><span class="p">:</span>
+    <span class="n">input_for_next_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span>
+        <span class="n">input_for_next_layer</span><span class="p">,</span> <span class="n">hidden_unit</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+    
+<span class="c1"># 输出层</span>
+<span class="c1"># last_hidden_output * W (logits) -&gt; softmax -&gt; prob概率</span>
+<span class="c1"># 1. logit -&gt; softmax -&gt; prob</span>
+<span class="c1"># 2. labels -&gt; one_hot</span>
+<span class="c1"># 3. calculate cross entropy</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">input_for_next_layer</span><span class="p">,</span> <span class="n">class_num</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_softmax_cross_entropy</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
+
+<span class="c1"># 得到预测值</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># get accuracy</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+
+<span class="c1"># 运行一次train_op，网络就训练一次</span>
+<span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>WARNING:tensorflow:From &lt;ipython-input-8-d810a880ea1b&gt;:13: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:From f:\condaenv\tfgpu\lib\site-packages\tensorflow\python\framework\op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From f:\condaenv\tfgpu\lib\site-packages\tensorflow\python\ops\losses\losses_impl.py:209: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13459,9 +13318,177 @@ alone [&#39;n&#39; &#39;y&#39;]
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># baseline_estimator.evaluate(</span>
-<span class="c1">#     input_fn=lambda : make_dataset(</span>
-<span class="c1">#         eval_df, y_eval, epochs=1, shuffle=False, batch_size=20))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tensor(&#34;Placeholder:0&#34;, shape=(?, 784), dtype=float32)
+Tensor(&#34;dense_2/BiasAdd:0&#34;, shape=(?, 10), dtype=float32)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#27169;&#22411;&#35757;&#32451;">&#27169;&#22411;&#35757;&#32451;<a class="anchor-link" href="#&#27169;&#22411;&#35757;&#32451;">&#182;</a></h2><p>session 是客户端（python）和C++运行时的连接，打开会话，就可以运行图了</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 初始化</span>
+<span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">train_steps_per_epoch</span> <span class="o">=</span> <span class="n">x_train_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">batch_size</span>
+<span class="n">valid_steps</span> <span class="o">=</span> <span class="n">x_valid_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">batch_size</span>
+
+<span class="c1"># 验证</span>
+<span class="k">def</span> <span class="nf">eval_with_sess</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+    <span class="n">eval_steps</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">batch_size</span>
+    <span class="n">eval_accuracies</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eval_steps</span><span class="p">):</span>
+        <span class="n">batch_data</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="n">step</span> <span class="o">*</span> <span class="n">batch_size</span> <span class="p">:</span> <span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">]</span>
+        <span class="n">batch_label</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">step</span> <span class="o">*</span> <span class="n">batch_size</span> <span class="p">:</span> <span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">]</span>
+        <span class="n">accuracy_val</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">x</span><span class="p">:</span> <span class="n">batch_data</span><span class="p">,</span>
+            <span class="n">y</span><span class="p">:</span> <span class="n">batch_label</span>
+        <span class="p">})</span>
+        <span class="n">eval_accuracies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">eval_accuracies</span><span class="p">)</span>
+
+<span class="c1"># 创建会话</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">train_steps_per_epoch</span><span class="p">):</span>
+            <span class="c1"># 取数据</span>
+            <span class="n">batch_data</span> <span class="o">=</span> <span class="n">x_train_scaled</span><span class="p">[</span><span class="n">step</span> <span class="o">*</span> <span class="n">batch_size</span> <span class="p">:</span> <span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">]</span>
+            <span class="n">batch_label</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="n">step</span> <span class="o">*</span> <span class="n">batch_size</span> <span class="p">:</span> <span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">]</span>
+            <span class="c1"># 训练</span>
+            <span class="n">loss_val</span><span class="p">,</span> <span class="n">accuracy_val</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">loss</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">train_op</span><span class="p">],</span>
+                <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="n">x</span><span class="p">:</span> <span class="n">batch_data</span><span class="p">,</span>
+                    <span class="n">y</span><span class="p">:</span> <span class="n">batch_label</span>
+                <span class="p">})</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Train] epoch:</span><span class="si">%d</span><span class="s1">, step:</span><span class="si">%d</span><span class="s1">, loss:</span><span class="si">%3.5f</span><span class="s1">, accuracy:</span><span class="si">%2.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">epoch</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">loss_val</span><span class="p">,</span> <span class="n">accuracy_val</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1"># 验证</span>
+        <span class="n">valid_accuracy</span> <span class="o">=</span> <span class="n">eval_with_sess</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span>
+                                        <span class="n">x_valid_scaled</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">[Valid] acc:</span><span class="si">%2.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">valid_accuracy</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[Train] epoch:0, step:2749, loss:0.38786, accuracy:0.80	[Valid] acc:0.86
+[Train] epoch:1, step:2749, loss:0.23071, accuracy:0.85	[Valid] acc:0.87
+[Train] epoch:2, step:2749, loss:0.19158, accuracy:0.95	[Valid] acc:0.88
+[Train] epoch:3, step:2749, loss:0.15562, accuracy:0.90	[Valid] acc:0.88
+[Train] epoch:4, step:2749, loss:0.20032, accuracy:0.90	[Valid] acc:0.88
+[Train] epoch:5, step:2749, loss:0.12497, accuracy:0.90	[Valid] acc:0.88
+[Train] epoch:6, step:2749, loss:0.10159, accuracy:0.95	[Valid] acc:0.88
+[Train] epoch:7, step:2749, loss:0.07915, accuracy:0.95	[Valid] acc:0.88
+[Train] epoch:8, step:2749, loss:0.04988, accuracy:1.00	[Valid] acc:0.88
+[Train] epoch:9, step:2749, loss:0.10262, accuracy:0.90	[Valid] acc:0.88
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dataset&#26500;&#24314;&#65292;&#20877;&#24314;&#27169;&#35757;&#32451;">Dataset&#26500;&#24314;&#65292;&#20877;&#24314;&#27169;&#35757;&#32451;<a class="anchor-link" href="#Dataset&#26500;&#24314;&#65292;&#20877;&#24314;&#27169;&#35757;&#32451;">&#182;</a></h2><h3 id="Dataset&#26500;&#24314;">Dataset&#26500;&#24314;<a class="anchor-link" href="#Dataset&#26500;&#24314;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="n">y_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataset</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test tf1.0 中 dataset是不可迭代的，会报错</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+
+<span class="c1"># 报错，只能在eager mode下使用</span>
+<span class="c1"># for data, label in dataset.take(1):</span>
+<span class="c1">#     print(data)</span>
+<span class="c1">#     print(label)</span>
 </pre></div>
 
     </div>
@@ -13472,28 +13499,33 @@ alone [&#39;n&#39; &#39;y&#39;]
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Linear-Estimator">Linear Estimator<a class="anchor-link" href="#Linear-Estimator">&#182;</a></h3>
+<p>dataset.make_one_shot_iterator 的特点：</p>
+<ol>
+<li>auto initialization</li>
+<li>can't be re-initialized.
+make_initializable_iterator can be</li>
+</ol>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="c1"># 定义文件夹，保存输出的模型</span>
-<span class="n">linear_output_dir</span> <span class="o">=</span> <span class="s1">&#39;linear_model&#39;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">linear_output_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">linear_output_dir</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">linear_output_dir</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">linear_output_dir</span><span class="p">)</span>
-    
-<span class="n">linear_estimator</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">LinearClassifier</span><span class="p">(</span>
-    <span class="n">model_dir</span><span class="o">=</span><span class="n">linear_output_dir</span><span class="p">,</span>
-<span class="c1">#     n_classes=2, </span>
-    <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tf1.0 中正确使用</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+
+<span class="n">dataset_iter</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">make_one_shot_iterator</span><span class="p">()</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">dataset_iter</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13510,205 +13542,10 @@ alone [&#39;n&#39; &#39;y&#39;]
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Using default config.
-INFO:tensorflow:Using config: {&#39;_model_dir&#39;: &#39;linear_model&#39;, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_save_checkpoints_steps&#39;: None, &#39;_save_checkpoints_secs&#39;: 600, &#39;_session_config&#39;: allow_soft_placement: true
-graph_options {
-  rewrite_options {
-    meta_optimizer_iterations: ONE
-  }
-}
-, &#39;_keep_checkpoint_max&#39;: 5, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_log_step_count_steps&#39;: 100, &#39;_train_distribute&#39;: None, &#39;_device_fn&#39;: None, &#39;_protocol&#39;: None, &#39;_eval_distribute&#39;: None, &#39;_experimental_distribute&#39;: None, &#39;_experimental_max_worker_delay_secs&#39;: None, &#39;_session_creation_timeout_secs&#39;: 7200, &#39;_service&#39;: None, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x0000017EDF3D5E80&gt;, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_task_id&#39;: 0, &#39;_global_id_in_cluster&#39;: 0, &#39;_master&#39;: &#39;&#39;, &#39;_evaluation_master&#39;: &#39;&#39;, &#39;_is_chief&#39;: True, &#39;_num_ps_replicas&#39;: 0, &#39;_num_worker_replicas&#39;: 1}
+<pre>(20, 784)
+(20,)
 </pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">linear_estimator</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\ops\resource_variable_ops.py:1630: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
-Instructions for updating:
-If using Keras pass *_constraint arguments to layers.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\training\training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
-INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:Layer linear/linear_model is casting an input tensor from dtype float64 to the layer&#39;s dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because it&#39;s dtype defaults to floatx.
-
-If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
-
-To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx(&#39;float64&#39;)`. To change just this layer, pass dtype=&#39;float64&#39; to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
-
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\feature_column\feature_column_v2.py:518: Layer.add_variable (from tensorflow.python.keras.engine.base_layer) is deprecated and will be removed in a future version.
-Instructions for updating:
-Please use `layer.add_weight` method instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\feature_column\feature_column_v2.py:4276: IndicatorColumn._variable_shape (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\feature_column\feature_column_v2.py:4331: VocabularyListCategoricalColumn._num_buckets (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_estimator\python\estimator\canned\linear.py:308: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use `tf.cast` instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\keras\optimizer_v2\ftrl.py:143: calling Constant.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
-Instructions for updating:
-Call initializer instance with the dtype argument instead of passing it to the constructor
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Create CheckpointSaverHook.
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Saving checkpoints for 0 into linear_model\model.ckpt.
-INFO:tensorflow:loss = 0.6931472, step = 0
-INFO:tensorflow:global_step/sec: 146.089
-INFO:tensorflow:loss = 0.42974675, step = 100 (0.685 sec)
-INFO:tensorflow:global_step/sec: 187.207
-INFO:tensorflow:loss = 0.62175107, step = 200 (0.540 sec)
-INFO:tensorflow:global_step/sec: 173.567
-INFO:tensorflow:loss = 0.51646996, step = 300 (0.570 sec)
-INFO:tensorflow:global_step/sec: 178.669
-INFO:tensorflow:loss = 0.44153577, step = 400 (0.560 sec)
-INFO:tensorflow:global_step/sec: 188.63
-INFO:tensorflow:loss = 0.4308874, step = 500 (0.530 sec)
-INFO:tensorflow:global_step/sec: 188.667
-INFO:tensorflow:loss = 0.415779, step = 600 (0.536 sec)
-INFO:tensorflow:global_step/sec: 188.777
-INFO:tensorflow:loss = 0.39096814, step = 700 (0.524 sec)
-INFO:tensorflow:global_step/sec: 192.322
-INFO:tensorflow:loss = 0.2098391, step = 800 (0.520 sec)
-INFO:tensorflow:global_step/sec: 185.145
-INFO:tensorflow:loss = 0.3097522, step = 900 (0.540 sec)
-INFO:tensorflow:global_step/sec: 192.346
-INFO:tensorflow:loss = 0.42066818, step = 1000 (0.530 sec)
-INFO:tensorflow:global_step/sec: 181.607
-INFO:tensorflow:loss = 0.1932587, step = 1100 (0.541 sec)
-INFO:tensorflow:global_step/sec: 188.791
-INFO:tensorflow:loss = 0.4141824, step = 1200 (0.530 sec)
-INFO:tensorflow:global_step/sec: 178.024
-INFO:tensorflow:loss = 0.44350308, step = 1300 (0.564 sec)
-INFO:tensorflow:global_step/sec: 182.467
-INFO:tensorflow:loss = 0.3671273, step = 1400 (0.546 sec)
-INFO:tensorflow:global_step/sec: 179.515
-INFO:tensorflow:loss = 0.390425, step = 1500 (0.562 sec)
-INFO:tensorflow:global_step/sec: 177.63
-INFO:tensorflow:loss = 0.4672044, step = 1600 (0.558 sec)
-INFO:tensorflow:global_step/sec: 185.215
-INFO:tensorflow:loss = 0.3382621, step = 1700 (0.540 sec)
-INFO:tensorflow:global_step/sec: 185.08
-INFO:tensorflow:loss = 0.33428866, step = 1800 (0.550 sec)
-INFO:tensorflow:global_step/sec: 181.911
-INFO:tensorflow:loss = 0.30520147, step = 1900 (0.540 sec)
-INFO:tensorflow:Saving checkpoints for 1960 into linear_model\model.ckpt.
-INFO:tensorflow:Loss for final step: 0.39376664.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tensorflow_estimator.python.estimator.canned.linear.LinearClassifierV2 at 0x17ec793ba58&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">linear_estimator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:Layer linear/linear_model is casting an input tensor from dtype float64 to the layer&#39;s dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because it&#39;s dtype defaults to floatx.
-
-If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
-
-To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx(&#39;float64&#39;)`. To change just this layer, pass dtype=&#39;float64&#39; to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
-
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Starting evaluation at 2020-02-06T22:36:34Z
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Restoring parameters from linear_model\model.ckpt-1960
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Finished evaluation at 2020-02-06-22:36:35
-INFO:tensorflow:Saving dict for global step 1960: accuracy = 0.78409094, accuracy_baseline = 0.625, auc = 0.83914894, auc_precision_recall = 0.7815013, average_loss = 0.46964055, global_step = 1960, label/mean = 0.375, loss = 0.45359072, precision = 0.71428573, prediction/mean = 0.3719563, recall = 0.7070707
-INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: linear_model\model.ckpt-1960
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;accuracy&#39;: 0.78409094,
- &#39;accuracy_baseline&#39;: 0.625,
- &#39;auc&#39;: 0.83914894,
- &#39;auc_precision_recall&#39;: 0.7815013,
- &#39;average_loss&#39;: 0.46964055,
- &#39;label/mean&#39;: 0.375,
- &#39;loss&#39;: 0.45359072,
- &#39;precision&#39;: 0.71428573,
- &#39;prediction/mean&#39;: 0.3719563,
- &#39;recall&#39;: 0.7070707,
- &#39;global_step&#39;: 1960}</pre>
-</div>
-
 </div>
 
 </div>
@@ -13718,31 +13555,51 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: l
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DNN-Estimator">DNN Estimator<a class="anchor-link" href="#DNN-Estimator">&#182;</a></h3>
+<h3 id="&#24314;&#27169;&#35757;&#32451;">&#24314;&#27169;&#35757;&#32451;<a class="anchor-link" href="#&#24314;&#27169;&#35757;&#32451;">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="c1"># 定义文件夹，保存输出的模型</span>
-<span class="n">dnn_output_dir</span> <span class="o">=</span> <span class="s1">&#39;dnn_model&#39;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hidden_units</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">class_num</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># 定义输入层</span>
+<span class="n">input_for_next_layer</span> <span class="o">=</span> <span class="n">x</span>
+<span class="c1"># 定义隐藏层</span>
+<span class="k">for</span> <span class="n">hidden_unit</span> <span class="ow">in</span> <span class="n">hidden_units</span><span class="p">:</span>
+    <span class="n">input_for_next_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span>
+        <span class="n">input_for_next_layer</span><span class="p">,</span> <span class="n">hidden_unit</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
     
-<span class="n">dnn_estimator</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">DNNClassifier</span><span class="p">(</span>
-    <span class="n">model_dir</span><span class="o">=</span><span class="n">dnn_output_dir</span><span class="p">,</span>
-<span class="c1">#     n_classes=2,</span>
-    <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
-    <span class="n">hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">],</span>
-    <span class="n">activation_fn</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">)</span>
+<span class="c1"># 输出层</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">input_for_next_layer</span><span class="p">,</span> <span class="n">class_num</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_softmax_cross_entropy</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
+
+<span class="c1"># 得到预测值</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># get accuracy</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+
+<span class="c1"># 运行一次train_op，网络就训练一次</span>
+<span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13759,14 +13616,8 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: l
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Using default config.
-INFO:tensorflow:Using config: {&#39;_model_dir&#39;: &#39;dnn_model&#39;, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_save_checkpoints_steps&#39;: None, &#39;_save_checkpoints_secs&#39;: 600, &#39;_session_config&#39;: allow_soft_placement: true
-graph_options {
-  rewrite_options {
-    meta_optimizer_iterations: ONE
-  }
-}
-, &#39;_keep_checkpoint_max&#39;: 5, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_log_step_count_steps&#39;: 100, &#39;_train_distribute&#39;: None, &#39;_device_fn&#39;: None, &#39;_protocol&#39;: None, &#39;_eval_distribute&#39;: None, &#39;_experimental_distribute&#39;: None, &#39;_experimental_max_worker_delay_secs&#39;: None, &#39;_session_creation_timeout_secs&#39;: 7200, &#39;_service&#39;: None, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x000002340818EDA0&gt;, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_task_id&#39;: 0, &#39;_global_id_in_cluster&#39;: 0, &#39;_master&#39;: &#39;&#39;, &#39;_evaluation_master&#39;: &#39;&#39;, &#39;_is_chief&#39;: True, &#39;_num_ps_replicas&#39;: 0, &#39;_num_worker_replicas&#39;: 1}
+<pre>Tensor(&#34;IteratorGetNext_1:0&#34;, shape=(?, 784), dtype=float32)
+Tensor(&#34;dense_8/BiasAdd:0&#34;, shape=(?, 10), dtype=float32)
 </pre>
 </div>
 </div>
@@ -13777,11 +13628,22 @@ graph_options {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dnn_estimator</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+<span class="n">train_steps_per_epoch</span> <span class="o">=</span> <span class="n">x_train_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">batch_size</span>
+
+<span class="c1"># 创建会话</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">train_steps_per_epoch</span><span class="p">):</span>
+            <span class="c1"># 训练</span>
+            <span class="n">loss_val</span><span class="p">,</span> <span class="n">accuracy_val</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">loss</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">train_op</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Train] epoch:</span><span class="si">%d</span><span class="s1">, step:</span><span class="si">%d</span><span class="s1">, loss:</span><span class="si">%3.5f</span><span class="s1">, accuracy:</span><span class="si">%2.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">epoch</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">loss_val</span><span class="p">,</span> <span class="n">accuracy_val</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13798,160 +13660,8 @@ graph_options {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\ops\resource_variable_ops.py:1630: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
-Instructions for updating:
-If using Keras pass *_constraint arguments to layers.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\training\training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
-INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:Layer dnn is casting an input tensor from dtype float64 to the layer&#39;s dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because it&#39;s dtype defaults to floatx.
-
-If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
-
-To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx(&#39;float64&#39;)`. To change just this layer, pass dtype=&#39;float64&#39; to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
-
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\feature_column\feature_column_v2.py:4276: IndicatorColumn._variable_shape (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\feature_column\feature_column_v2.py:4331: VocabularyListCategoricalColumn._num_buckets (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_estimator\python\estimator\head\binary_class_head.py:206: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use `tf.cast` instead.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Create CheckpointSaverHook.
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Saving checkpoints for 0 into dnn_model\model.ckpt.
-INFO:tensorflow:loss = 1.5659068, step = 0
-INFO:tensorflow:global_step/sec: 149.219
-INFO:tensorflow:loss = 0.6483451, step = 100 (0.670 sec)
-INFO:tensorflow:global_step/sec: 188.666
-INFO:tensorflow:loss = 0.54390943, step = 200 (0.530 sec)
-INFO:tensorflow:global_step/sec: 185.249
-INFO:tensorflow:loss = 0.4500445, step = 300 (0.540 sec)
-INFO:tensorflow:global_step/sec: 192.329
-INFO:tensorflow:loss = 0.442823, step = 400 (0.530 sec)
-INFO:tensorflow:global_step/sec: 185.127
-INFO:tensorflow:loss = 0.51294166, step = 500 (0.530 sec)
-INFO:tensorflow:global_step/sec: 187.612
-INFO:tensorflow:loss = 0.49308866, step = 600 (0.533 sec)
-INFO:tensorflow:global_step/sec: 182.843
-INFO:tensorflow:loss = 0.46976888, step = 700 (0.547 sec)
-INFO:tensorflow:global_step/sec: 188.698
-INFO:tensorflow:loss = 0.28390783, step = 800 (0.530 sec)
-INFO:tensorflow:global_step/sec: 188.706
-INFO:tensorflow:loss = 0.35449278, step = 900 (0.540 sec)
-INFO:tensorflow:global_step/sec: 188.606
-INFO:tensorflow:loss = 0.49086595, step = 1000 (0.520 sec)
-INFO:tensorflow:global_step/sec: 188.652
-INFO:tensorflow:loss = 0.29173502, step = 1100 (0.530 sec)
-INFO:tensorflow:global_step/sec: 187.001
-INFO:tensorflow:loss = 0.5909201, step = 1200 (0.540 sec)
-INFO:tensorflow:global_step/sec: 190.398
-INFO:tensorflow:loss = 0.409008, step = 1300 (0.530 sec)
-INFO:tensorflow:global_step/sec: 185.234
-INFO:tensorflow:loss = 0.35488045, step = 1400 (0.530 sec)
-INFO:tensorflow:global_step/sec: 188.691
-INFO:tensorflow:loss = 0.33016568, step = 1500 (0.537 sec)
-INFO:tensorflow:global_step/sec: 181.71
-INFO:tensorflow:loss = 0.38078, step = 1600 (0.544 sec)
-INFO:tensorflow:global_step/sec: 188.785
-INFO:tensorflow:loss = 0.23298112, step = 1700 (0.530 sec)
-INFO:tensorflow:global_step/sec: 185.218
-INFO:tensorflow:loss = 0.27804404, step = 1800 (0.540 sec)
-INFO:tensorflow:global_step/sec: 188.663
-INFO:tensorflow:loss = 0.454516, step = 1900 (0.530 sec)
-INFO:tensorflow:Saving checkpoints for 1960 into dnn_model\model.ckpt.
-INFO:tensorflow:Loss for final step: 0.1548893.
-</pre>
+<pre>[Train] epoch:9, step:2749, loss:0.33168, accuracy:0.90</pre>
 </div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tensorflow_estimator.python.estimator.canned.dnn.DNNClassifierV2 at 0x2340817ba58&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dnn_estimator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:Layer dnn is casting an input tensor from dtype float64 to the layer&#39;s dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because it&#39;s dtype defaults to floatx.
-
-If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
-
-To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx(&#39;float64&#39;)`. To change just this layer, pass dtype=&#39;float64&#39; to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
-
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Starting evaluation at 2020-02-06T22:42:32Z
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Restoring parameters from dnn_model\model.ckpt-1960
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Finished evaluation at 2020-02-06-22:42:33
-INFO:tensorflow:Saving dict for global step 1960: accuracy = 0.780303, accuracy_baseline = 0.625, auc = 0.83663905, auc_precision_recall = 0.79695463, average_loss = 0.5478012, global_step = 1960, label/mean = 0.375, loss = 0.52315557, precision = 0.664, prediction/mean = 0.45481092, recall = 0.83838385
-INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: dnn_model\model.ckpt-1960
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;accuracy&#39;: 0.780303,
- &#39;accuracy_baseline&#39;: 0.625,
- &#39;auc&#39;: 0.83663905,
- &#39;auc_precision_recall&#39;: 0.79695463,
- &#39;average_loss&#39;: 0.5478012,
- &#39;label/mean&#39;: 0.375,
- &#39;loss&#39;: 0.52315557,
- &#39;precision&#39;: 0.664,
- &#39;prediction/mean&#39;: 0.45481092,
- &#39;recall&#39;: 0.83838385,
- &#39;global_step&#39;: 1960}</pre>
-</div>
-
 </div>
 
 </div>
@@ -13961,51 +13671,44 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: d
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#20132;&#21449;&#29305;&#24449;">&#20132;&#21449;&#29305;&#24449;<a class="anchor-link" href="#&#20132;&#21449;&#29305;&#24449;">&#182;</a></h2><p>cross feature：对两个离散特征做笛卡尔积</p>
-<p>Eg：</p>
-<p>age:[1,2,3,4,5], gender:[male, female]</p>
-<p>age_x_gender:[(1,male),...,(5,male), (1,male),...,(5,female)]</p>
-<p>100000:100 -&gt; hash(100000 values) % 100</p>
-
+<h2 id="&#21478;&#19968;&#31181;Dataset&#26500;&#24314;&#26041;&#24335;&#65288;&#25512;&#33616;&#65289;">&#21478;&#19968;&#31181;Dataset&#26500;&#24314;&#26041;&#24335;&#65288;&#25512;&#33616;&#65289;<a class="anchor-link" href="#&#21478;&#19968;&#31181;Dataset&#26500;&#24314;&#26041;&#24335;&#65288;&#25512;&#33616;&#65289;">&#182;</a></h2><h3 id="Dataset&#26500;&#24314;">Dataset&#26500;&#24314;<a class="anchor-link" href="#Dataset&#26500;&#24314;">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tf.feature_column.crossed_column 定义交叉特征</span>
-<span class="n">feature_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">indicator_column</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">crossed_column</span><span class="p">([</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">],</span> <span class="n">hash_bucket_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)))</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
 
-    </div>
-</div>
-</div>
+<span class="c1"># 构建dataset</span>
+<span class="n">images_placeholder</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">])</span>
+<span class="n">labels_placeholder</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">])</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">images_placeholder</span><span class="p">,</span> <span class="n">labels_placeholder</span><span class="p">,</span>
+                       <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="c1"># 定义文件夹，保存输出的模型</span>
-<span class="n">dnn_output_dir</span> <span class="o">=</span> <span class="s1">&#39;dnn_model_new_feature&#39;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-    
-<span class="n">dnn_estimator_new</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">DNNClassifier</span><span class="p">(</span>
-    <span class="n">model_dir</span><span class="o">=</span><span class="n">dnn_output_dir</span><span class="p">,</span>
-<span class="c1">#     n_classes=2,</span>
-    <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
-    <span class="n">hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">],</span>
-    <span class="n">activation_fn</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">)</span>
+<span class="c1"># 定义迭代器</span>
+<span class="n">dataset_iter</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">make_initializable_iterator</span><span class="p">()</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">dataset_iter</span><span class="o">.</span><span class="n">get_next</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="c1"># 初始化</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dataset_iter</span><span class="o">.</span><span class="n">initializer</span><span class="p">,</span> <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">images_placeholder</span><span class="p">:</span> <span class="n">x_train_scaled</span><span class="p">,</span>
+        <span class="n">labels_placeholder</span><span class="p">:</span> <span class="n">y_train</span>
+    <span class="p">})</span>
+    <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dataset_iter</span><span class="o">.</span><span class="n">initializer</span><span class="p">,</span> <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">images_placeholder</span><span class="p">:</span> <span class="n">x_valid_scaled</span><span class="p">,</span>
+        <span class="n">labels_placeholder</span><span class="p">:</span> <span class="n">y_valid</span>
+    <span class="p">})</span>
+    <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14022,91 +13725,14 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: d
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Using default config.
-INFO:tensorflow:Using config: {&#39;_model_dir&#39;: &#39;dnn_model_new_feature&#39;, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_save_checkpoints_steps&#39;: None, &#39;_save_checkpoints_secs&#39;: 600, &#39;_session_config&#39;: allow_soft_placement: true
-graph_options {
-  rewrite_options {
-    meta_optimizer_iterations: ONE
-  }
-}
-, &#39;_keep_checkpoint_max&#39;: 5, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_log_step_count_steps&#39;: 100, &#39;_train_distribute&#39;: None, &#39;_device_fn&#39;: None, &#39;_protocol&#39;: None, &#39;_eval_distribute&#39;: None, &#39;_experimental_distribute&#39;: None, &#39;_experimental_max_worker_delay_secs&#39;: None, &#39;_session_creation_timeout_secs&#39;: 7200, &#39;_service&#39;: None, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x000001DD1C39EB70&gt;, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_task_id&#39;: 0, &#39;_global_id_in_cluster&#39;: 0, &#39;_master&#39;: &#39;&#39;, &#39;_evaluation_master&#39;: &#39;&#39;, &#39;_is_chief&#39;: True, &#39;_num_ps_replicas&#39;: 0, &#39;_num_worker_replicas&#39;: 1}
+<pre>(20, 784)
+(20,)
+(20, 784)
+(20,)
 </pre>
 </div>
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dnn_estimator_new</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\ops\resource_variable_ops.py:1630: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
-Instructions for updating:
-If using Keras pass *_constraint arguments to layers.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\training\training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
-INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:Layer dnn is casting an input tensor from dtype float64 to the layer&#39;s dtype of float32, which is new behavior in TensorFlow 2.  The layer has dtype float32 because it&#39;s dtype defaults to floatx.
-
-If you intended to run this layer in float32, you can safely ignore this warning. If in doubt, this warning is likely only an issue if you are porting a TensorFlow 1.X model to TensorFlow 2.
-
-To change all layers to have dtype float64 by default, call `tf.keras.backend.set_floatx(&#39;float64&#39;)`. To change just this layer, pass dtype=&#39;float64&#39; to the layer constructor. If you are the author of this layer, you can disable autocasting by passing autocast=False to the base Layer constructor.
-
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\feature_column\feature_column_v2.py:4276: IndicatorColumn._variable_shape (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\feature_column\feature_column_v2.py:4331: CrossedColumn._num_buckets (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_core\python\feature_column\feature_column_v2.py:4331: VocabularyListCategoricalColumn._num_buckets (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-WARNING:tensorflow:From f:\condaenv\tf2_py36\lib\site-packages\tensorflow_estimator\python\estimator\head\binary_class_head.py:206: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use `tf.cast` instead.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Create CheckpointSaverHook.
-INFO:tensorflow:Graph was finalized.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dnn_estimator_new</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
