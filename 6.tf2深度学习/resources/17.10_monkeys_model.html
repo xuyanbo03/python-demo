@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>13.estimator_premade</title>
+<title>17.10_monkeys_model</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13077,30 +13077,16 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator&#22788;&#29702;titanic&#38382;&#39064;">&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator&#22788;&#29702;titanic&#38382;&#39064;<a class="anchor-link" href="#&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator&#22788;&#29702;titanic&#38382;&#39064;">&#182;</a></h1>
+<h1 id="Kaggle-10-monkeys-&#22270;&#20687;&#20998;&#31867;&#23454;&#25112;">Kaggle 10 monkeys &#22270;&#20687;&#20998;&#31867;&#23454;&#25112;<a class="anchor-link" href="#Kaggle-10-monkeys-&#22270;&#20687;&#20998;&#31867;&#23454;&#25112;">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install tensorflow-gpu<span class="o">==</span><span class="m">2</span>.0.0a0
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 导入</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13132,14 +13118,14 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2.0.0-alpha0
-sys.version_info(major=3, minor=6, micro=4, releaselevel=&#39;final&#39;, serial=0)
-matplotlib 2.2.3
-numpy 1.16.2
-pandas 0.22.0
-sklearn 0.19.1
-tensorflow 2.0.0-alpha0
-tensorflow.python.keras.api._v2.keras 2.2.4-tf
+<pre>2.0.0
+sys.version_info(major=3, minor=6, micro=10, releaselevel=&#39;final&#39;, serial=0)
+matplotlib 3.1.2
+numpy 1.18.1
+pandas 0.25.3
+sklearn 0.22.1
+tensorflow 2.0.0
+tensorflow_core.keras 2.2.4-tf
 </pre>
 </div>
 </div>
@@ -13150,7 +13136,7 @@ tensorflow.python.keras.api._v2.keras 2.2.4-tf
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">solve_cudnn_error</span><span class="p">():</span>
@@ -13173,27 +13159,47 @@ tensorflow.python.keras.api._v2.keras 2.2.4-tf
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 Physical GPUs, 1 Logical GPUs
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#35835;&#21462;&#25968;&#25454;&#65292;&#26500;&#24314;&#25968;&#25454;&#38598;">&#35835;&#21462;&#25968;&#25454;&#65292;&#26500;&#24314;&#25968;&#25454;&#38598;<a class="anchor-link" href="#&#35835;&#21462;&#25968;&#25454;&#65292;&#26500;&#24314;&#25968;&#25454;&#38598;">&#182;</a></h2>
+<h2 id="&#25968;&#25454;&#35835;&#21462;">&#25968;&#25454;&#35835;&#21462;<a class="anchor-link" href="#&#25968;&#25454;&#35835;&#21462;">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_file</span> <span class="o">=</span> <span class="s1">&#39;data/titanic/train.csv&#39;</span>
-<span class="n">eval_file</span> <span class="o">=</span> <span class="s1">&#39;data/titanic/eval.csv&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 判断文件存在</span>
+<span class="n">train_dir</span> <span class="o">=</span> <span class="s1">&#39;data/10_monkeys/training&#39;</span>
+<span class="n">valid_dir</span> <span class="o">=</span> <span class="s1">&#39;data/10_monkeys/validation&#39;</span>
+<span class="n">label_file</span> <span class="o">=</span> <span class="s1">&#39;data/10_monkeys/monkey_labels.txt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">train_dir</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">valid_dir</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">label_file</span><span class="p">))</span>
 
-<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span>
-<span class="n">eval_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">eval_file</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eval_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">train_dir</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">valid_dir</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13210,32 +13216,11 @@ tensorflow.python.keras.api._v2.keras 2.2.4-tf
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>   survived     sex   age  n_siblings_spouses  parch     fare  class     deck  \
-0         0    male  22.0                   1      0   7.2500  Third  unknown   
-1         1  female  38.0                   1      0  71.2833  First        C   
-2         1  female  26.0                   0      0   7.9250  Third  unknown   
-3         1  female  35.0                   1      0  53.1000  First        C   
-4         0    male  28.0                   0      0   8.4583  Third  unknown   
-
-   embark_town alone  
-0  Southampton     n  
-1    Cherbourg     n  
-2  Southampton     y  
-3  Southampton     n  
-4   Queenstown     y  
-   survived     sex   age  n_siblings_spouses  parch     fare   class  \
-0         0    male  35.0                   0      0   8.0500   Third   
-1         0    male  54.0                   0      0  51.8625   First   
-2         1  female  58.0                   0      0  26.5500   First   
-3         1  female  55.0                   0      0  16.0000  Second   
-4         1    male  34.0                   0      0  13.0000  Second   
-
-      deck  embark_town alone  
-0  unknown  Southampton     y  
-1        E  Southampton     y  
-2        C  Southampton     y  
-3  unknown  Southampton     y  
-4        D  Southampton     y  
+<pre>True
+True
+True
+[&#39;n0&#39;, &#39;n1&#39;, &#39;n2&#39;, &#39;n3&#39;, &#39;n4&#39;, &#39;n5&#39;, &#39;n6&#39;, &#39;n7&#39;, &#39;n8&#39;, &#39;n9&#39;]
+[&#39;n0&#39;, &#39;n1&#39;, &#39;n2&#39;, &#39;n3&#39;, &#39;n4&#39;, &#39;n5&#39;, &#39;n6&#39;, &#39;n7&#39;, &#39;n8&#39;, &#39;n9&#39;]
 </pre>
 </div>
 </div>
@@ -13246,17 +13231,12 @@ tensorflow.python.keras.api._v2.keras 2.2.4-tf
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 将survived字段取出，赋给label</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
-<span class="n">y_eval</span> <span class="o">=</span> <span class="n">eval_df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eval_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y_eval</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 读取labels</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">label_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13273,44 +13253,288 @@ tensorflow.python.keras.api._v2.keras 2.2.4-tf
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>      sex   age  n_siblings_spouses  parch     fare  class     deck  \
-0    male  22.0                   1      0   7.2500  Third  unknown   
-1  female  38.0                   1      0  71.2833  First        C   
-2  female  26.0                   0      0   7.9250  Third  unknown   
-3  female  35.0                   1      0  53.1000  First        C   
-4    male  28.0                   0      0   8.4583  Third  unknown   
+<pre>   Label     Latin Name              Common Name                     \
+0  n0         alouatta_palliata\t    mantled_howler                   
+1  n1        erythrocebus_patas\t    patas_monkey                     
+2  n2        cacajao_calvus\t        bald_uakari                      
+3  n3        macaca_fuscata\t        japanese_macaque                 
+4  n4       cebuella_pygmea\t        pygmy_marmoset                   
+5  n5       cebus_capucinus\t        white_headed_capuchin            
+6  n6       mico_argentatus\t        silvery_marmoset                 
+7  n7      saimiri_sciureus\t        common_squirrel_monkey           
+8  n8       aotus_nigriceps\t        black_headed_night_monkey        
+9  n9       trachypithecus_johnii    nilgiri_langur                   
 
-   embark_town alone  
-0  Southampton     n  
-1    Cherbourg     n  
-2  Southampton     y  
-3  Southampton     n  
-4   Queenstown     y  
-      sex   age  n_siblings_spouses  parch     fare   class     deck  \
-0    male  35.0                   0      0   8.0500   Third  unknown   
-1    male  54.0                   0      0  51.8625   First        E   
-2  female  58.0                   0      0  26.5500   First        C   
-3  female  55.0                   0      0  16.0000  Second  unknown   
-4    male  34.0                   0      0  13.0000  Second        D   
+    Train Images    Validation Images  
+0             131                  26  
+1             139                  28  
+2             137                  27  
+3             152                  30  
+4             131                  26  
+5             141                  28  
+6             132                  26  
+7             142                  28  
+8             133                  27  
+9             132                  26  
+</pre>
+</div>
+</div>
 
-   embark_town alone  
-0  Southampton     y  
-1  Southampton     y  
-2  Southampton     y  
-3  Southampton     y  
-4  Southampton     y  
-0    0
-1    1
-2    1
-3    1
-4    0
-Name: survived, dtype: int64
-0    0
-1    0
-2    1
-3    1
-4    1
-Name: survived, dtype: int64
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#23545;&#22270;&#20687;&#36827;&#34892;&#25968;&#25454;&#22686;&#24378;">&#23545;&#22270;&#20687;&#36827;&#34892;&#25968;&#25454;&#22686;&#24378;<a class="anchor-link" href="#&#23545;&#22270;&#20687;&#36827;&#34892;&#25968;&#25454;&#22686;&#24378;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 将图片转化成同一尺寸</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># 读取图片并增强</span>
+<span class="n">train_datagen</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">ImageDataGenerator</span><span class="p">(</span>
+    <span class="n">rescale</span><span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="c1"># 缩放到0-1之间</span>
+    <span class="n">rotation_range</span><span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="c1"># 旋转范围</span>
+    <span class="n">width_shift_range</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="c1"># 水平位移</span>
+    <span class="n">height_shift_range</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="c1"># 竖直平移</span>
+    <span class="n">shear_range</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="c1"># 剪切范围</span>
+    <span class="n">zoom_range</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="c1"># 缩放范围</span>
+    <span class="n">horizontal_flip</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># 随机水平翻转</span>
+    <span class="n">fill_mode</span><span class="o">=</span> <span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="c1"># 对空白位置的填充规则</span>
+<span class="p">)</span>
+<span class="c1"># 按照文件夹进行分类，进行数据增强</span>
+<span class="n">train_generator</span> <span class="o">=</span> <span class="n">train_datagen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+    <span class="n">train_dir</span><span class="p">,</span> <span class="n">target_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">class_mode</span> <span class="o">=</span> <span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
+
+<span class="n">valid_datagen</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">ImageDataGenerator</span><span class="p">(</span>
+    <span class="n">rescale</span><span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="c1"># 缩放到0-1之间</span>
+<span class="p">)</span>
+<span class="n">valid_generator</span> <span class="o">=</span> <span class="n">valid_datagen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+    <span class="n">valid_dir</span><span class="p">,</span> <span class="n">target_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">class_mode</span> <span class="o">=</span> <span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
+
+<span class="n">train_num</span> <span class="o">=</span> <span class="n">train_generator</span><span class="o">.</span><span class="n">samples</span>
+<span class="n">valid_num</span> <span class="o">=</span> <span class="n">valid_generator</span><span class="o">.</span><span class="n">samples</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_num</span><span class="p">,</span> <span class="n">valid_num</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Found 1098 images belonging to 10 classes.
+Found 272 images belonging to 10 classes.
+1098 272
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">train_generator</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(64, 128, 128, 3) (64, 10)
+[[0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#22522;&#30784;&#27169;&#22411;&#26500;&#24314;--CNN">&#22522;&#30784;&#27169;&#22411;&#26500;&#24314;--CNN<a class="anchor-link" href="#&#22522;&#30784;&#27169;&#22411;&#26500;&#24314;--CNN">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span>
+                        <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">channels</span><span class="p">]),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+    
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+    
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+    
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">),</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Model: &#34;sequential&#34;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 128, 128, 32)      896       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 128, 128, 32)      9248      
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 64, 64, 32)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 64, 64, 64)        18496     
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 64, 64, 64)        36928     
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 32, 32, 64)        0         
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 32, 32, 128)       73856     
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 32, 32, 128)       147584    
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 16, 16, 128)       0         
+_________________________________________________________________
+flatten (Flatten)            (None, 32768)             0         
+_________________________________________________________________
+dense (Dense)                (None, 128)               4194432   
+_________________________________________________________________
+dense_1 (Dense)              (None, 10)                1290      
+=================================================================
+Total params: 4,482,730
+Trainable params: 4,482,730
+Non-trainable params: 0
+_________________________________________________________________
 </pre>
 </div>
 </div>
@@ -13324,25 +13548,13 @@ Name: survived, dtype: int64
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 将数据分成两类：离散和连续</span>
-<span class="n">categorical_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;n_siblings_spouses&#39;</span><span class="p">,</span> <span class="s1">&#39;parch&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span>
-                       <span class="s1">&#39;deck&#39;</span><span class="p">,</span> <span class="s1">&#39;embark_town&#39;</span><span class="p">,</span> <span class="s1">&#39;alone&#39;</span><span class="p">]</span>
-<span class="n">numeric_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;fare&#39;</span><span class="p">]</span>
-
-<span class="n">feature_columns</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">categorical_column</span> <span class="ow">in</span> <span class="n">categorical_columns</span><span class="p">:</span>
-    <span class="c1"># 获取离散值所有可能值</span>
-    <span class="n">vocab</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">categorical_column</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">categorical_column</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
-    <span class="c1"># 对离散值封装，做onehot编码，再加入feature_columns中</span>
-    <span class="n">feature_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">indicator_column</span><span class="p">(</span>
-            <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">categorical_column_with_vocabulary_list</span><span class="p">(</span>
-                <span class="n">categorical_column</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)))</span>
-    
-<span class="k">for</span> <span class="n">numeric_column</span> <span class="ow">in</span> <span class="n">numeric_columns</span><span class="p">:</span>
-    <span class="n">feature_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">numeric_column</span><span class="p">(</span><span class="n">numeric_column</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 训练</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_generator</span><span class="p">(</span><span class="n">train_generator</span><span class="p">,</span>
+                              <span class="n">steps_per_epoch</span><span class="o">=</span> <span class="n">train_num</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">,</span>
+                              <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+                              <span class="n">validation_data</span><span class="o">=</span><span class="n">valid_generator</span><span class="p">,</span>
+                              <span class="n">validation_steps</span><span class="o">=</span> <span class="n">valid_num</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13359,13 +13571,26 @@ Name: survived, dtype: int64
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>sex [&#39;male&#39; &#39;female&#39;]
-n_siblings_spouses [1 0 3 4 2 5 8]
-parch [0 1 2 5 3 4]
-class [&#39;Third&#39; &#39;First&#39; &#39;Second&#39;]
-deck [&#39;unknown&#39; &#39;C&#39; &#39;G&#39; &#39;A&#39; &#39;B&#39; &#39;D&#39; &#39;F&#39; &#39;E&#39;]
-embark_town [&#39;Southampton&#39; &#39;Cherbourg&#39; &#39;Queenstown&#39; &#39;unknown&#39;]
-alone [&#39;n&#39; &#39;y&#39;]
+<pre>Epoch 1/10
+17/17 [==============================] - 29s 2s/step - loss: 2.3178 - accuracy: 0.1006 - val_loss: 2.2766 - val_accuracy: 0.1211
+Epoch 2/10
+17/17 [==============================] - 21s 1s/step - loss: 2.2352 - accuracy: 0.1605 - val_loss: 1.9845 - val_accuracy: 0.3008
+Epoch 3/10
+17/17 [==============================] - 21s 1s/step - loss: 1.9911 - accuracy: 0.2814 - val_loss: 1.6760 - val_accuracy: 0.3711
+Epoch 4/10
+17/17 [==============================] - 20s 1s/step - loss: 1.7856 - accuracy: 0.3443 - val_loss: 1.6182 - val_accuracy: 0.4062
+Epoch 5/10
+17/17 [==============================] - 20s 1s/step - loss: 1.8522 - accuracy: 0.3230 - val_loss: 1.5182 - val_accuracy: 0.4648
+Epoch 6/10
+17/17 [==============================] - 19s 1s/step - loss: 1.5844 - accuracy: 0.4043 - val_loss: 1.5110 - val_accuracy: 0.4727
+Epoch 7/10
+17/17 [==============================] - 20s 1s/step - loss: 1.5280 - accuracy: 0.4304 - val_loss: 1.4657 - val_accuracy: 0.4883
+Epoch 8/10
+17/17 [==============================] - 20s 1s/step - loss: 1.5101 - accuracy: 0.4540 - val_loss: 1.4864 - val_accuracy: 0.4961
+Epoch 9/10
+17/17 [==============================] - 19s 1s/step - loss: 1.4998 - accuracy: 0.4487 - val_loss: 1.3247 - val_accuracy: 0.5312
+Epoch 10/10
+17/17 [==============================] - 19s 1s/step - loss: 1.3863 - accuracy: 0.4913 - val_loss: 1.3946 - val_accuracy: 0.4805
 </pre>
 </div>
 </div>
@@ -13379,55 +13604,48 @@ alone [&#39;n&#39; &#39;y&#39;]
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 从pandas dataframe中构建dataset</span>
-<span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">label_df</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span><span class="p">):</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="nb">dict</span><span class="p">(</span><span class="n">data_df</span><span class="p">),</span> <span class="n">label_df</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
-        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">dataset</span>
-
-<span class="k">def</span> <span class="nf">make_input_fn</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">label_df</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">input_fn</span><span class="p">():</span>
-        <span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="nb">dict</span><span class="p">(</span><span class="n">data_df</span><span class="p">),</span> <span class="n">label_df</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
-            <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-        <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">dataset</span>
-    <span class="k">return</span> <span class="n">input_fn</span>
-
-<span class="n">train_input_fn</span> <span class="o">=</span> <span class="n">make_input_fn</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">eval_input_fn</span> <span class="o">=</span> <span class="n">make_input_fn</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>dict_keys([&#39;loss&#39;, &#39;accuracy&#39;, &#39;val_loss&#39;, &#39;val_accuracy&#39;])
+</pre>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator">&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator<a class="anchor-link" href="#&#20351;&#29992;&#39044;&#23450;&#20041;&#30340;estimator">&#182;</a></h2><h3 id="BaseLine-Estimator">BaseLine Estimator<a class="anchor-link" href="#BaseLine-Estimator">&#182;</a></h3>
+</div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="c1"># 定义文件夹，保存输出的模型</span>
-<span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;baseline_model&#39;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_learning_curves</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;val_&#39;</span><span class="o">+</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_&#39;</span><span class="o">+</span><span class="n">label</span><span class="p">]</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     
-<span class="n">baseline_estimator</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">BaselineClassifier</span><span class="p">(</span>
-    <span class="n">model_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_learning_curves</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot_learning_curves</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13443,184 +13661,27 @@ alone [&#39;n&#39; &#39;y&#39;]
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Using default config.
-INFO:tensorflow:Using config: {&#39;_model_dir&#39;: &#39;baseline_model&#39;, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_save_checkpoints_steps&#39;: None, &#39;_save_checkpoints_secs&#39;: 600, &#39;_session_config&#39;: allow_soft_placement: true
-graph_options {
-  rewrite_options {
-    meta_optimizer_iterations: ONE
-  }
-}
-, &#39;_keep_checkpoint_max&#39;: 5, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_log_step_count_steps&#39;: 100, &#39;_train_distribute&#39;: None, &#39;_device_fn&#39;: None, &#39;_protocol&#39;: None, &#39;_eval_distribute&#39;: None, &#39;_experimental_distribute&#39;: None, &#39;_service&#39;: None, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x7f0fd57bf9e8&gt;, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_task_id&#39;: 0, &#39;_global_id_in_cluster&#39;: 0, &#39;_master&#39;: &#39;&#39;, &#39;_evaluation_master&#39;: &#39;&#39;, &#39;_is_chief&#39;: True, &#39;_num_ps_replicas&#39;: 0, &#39;_num_worker_replicas&#39;: 1}
-</pre>
-</div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
 </div>
 
 </div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">baseline_estimator</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
 
 <div class="output_area">
 
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:238: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
-INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/ops/variable_scope.py:883: calling Zeros.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
-Instructions for updating:
-Call initializer instance with the dtype argument instead of passing it to the constructor
-WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow_estimator/python/estimator/head/base_head.py:546: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use `tf.cast` instead.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Create CheckpointSaverHook.
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Saving checkpoints for 0 into baseline_model/model.ckpt.
-INFO:tensorflow:loss = 0.6931472, step = 0
-INFO:tensorflow:global_step/sec: 267.446
-INFO:tensorflow:loss = 0.69781625, step = 100 (0.375 sec)
-INFO:tensorflow:global_step/sec: 360.908
-INFO:tensorflow:loss = 0.67727596, step = 200 (0.277 sec)
-INFO:tensorflow:global_step/sec: 370.339
-INFO:tensorflow:loss = 0.66348416, step = 300 (0.270 sec)
-INFO:tensorflow:global_step/sec: 369.907
-INFO:tensorflow:loss = 0.6768123, step = 400 (0.270 sec)
-INFO:tensorflow:global_step/sec: 372.947
-INFO:tensorflow:loss = 0.6913319, step = 500 (0.268 sec)
-INFO:tensorflow:global_step/sec: 354.757
-INFO:tensorflow:loss = 0.64715827, step = 600 (0.282 sec)
-INFO:tensorflow:global_step/sec: 378.397
-INFO:tensorflow:loss = 0.5905231, step = 700 (0.264 sec)
-INFO:tensorflow:global_step/sec: 376.477
-INFO:tensorflow:loss = 0.6618012, step = 800 (0.265 sec)
-INFO:tensorflow:global_step/sec: 379.322
-INFO:tensorflow:loss = 0.6761504, step = 900 (0.264 sec)
-INFO:tensorflow:global_step/sec: 354.33
-INFO:tensorflow:loss = 0.61766946, step = 1000 (0.282 sec)
-INFO:tensorflow:global_step/sec: 361.863
-INFO:tensorflow:loss = 0.6617534, step = 1100 (0.281 sec)
-INFO:tensorflow:global_step/sec: 360.406
-INFO:tensorflow:loss = 0.59424174, step = 1200 (0.273 sec)
-INFO:tensorflow:global_step/sec: 369.19
-INFO:tensorflow:loss = 0.64848745, step = 1300 (0.271 sec)
-INFO:tensorflow:global_step/sec: 347.024
-INFO:tensorflow:loss = 0.61872864, step = 1400 (0.288 sec)
-INFO:tensorflow:global_step/sec: 367.906
-INFO:tensorflow:loss = 0.6024939, step = 1500 (0.272 sec)
-INFO:tensorflow:global_step/sec: 375.776
-INFO:tensorflow:loss = 0.6898258, step = 1600 (0.266 sec)
-INFO:tensorflow:global_step/sec: 367.844
-INFO:tensorflow:loss = 0.6760516, step = 1700 (0.272 sec)
-INFO:tensorflow:global_step/sec: 361.811
-INFO:tensorflow:loss = 0.67595446, step = 1800 (0.276 sec)
-INFO:tensorflow:global_step/sec: 367.056
-INFO:tensorflow:loss = 0.74949646, step = 1900 (0.272 sec)
-INFO:tensorflow:Saving checkpoints for 1960 into baseline_model/model.ckpt.
-INFO:tensorflow:Loss for final step: 0.6427129.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[11]:</div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tensorflow_estimator.python.estimator.canned.baseline.BaselineClassifierV2 at 0x7f0fd57bf710&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">baseline_estimator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span>
-        <span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Starting evaluation at 2020-02-07T15:50:40Z
-INFO:tensorflow:Graph was finalized.
-WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1276: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use standard file APIs to check for files with this prefix.
-INFO:tensorflow:Restoring parameters from baseline_model/model.ckpt-1960
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Finished evaluation at 2020-02-07-15:50:41
-INFO:tensorflow:Saving dict for global step 1960: accuracy = 0.625, accuracy_baseline = 0.625, auc = 0.5, auc_precision_recall = 0.375, average_loss = 0.66182214, global_step = 1960, label/mean = 0.375, loss = 0.6585086, precision = 0.0, prediction/mean = 0.38605928, recall = 0.0
-INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: baseline_model/model.ckpt-1960
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;accuracy&#39;: 0.625,
- &#39;accuracy_baseline&#39;: 0.625,
- &#39;auc&#39;: 0.5,
- &#39;auc_precision_recall&#39;: 0.375,
- &#39;average_loss&#39;: 0.66182214,
- &#39;global_step&#39;: 1960,
- &#39;label/mean&#39;: 0.375,
- &#39;loss&#39;: 0.6585086,
- &#39;precision&#39;: 0.0,
- &#39;prediction/mean&#39;: 0.38605928,
- &#39;recall&#39;: 0.0}</pre>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
 </div>
 
 </div>
@@ -13632,28 +13693,46 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: b
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Linear-Estimator">Linear Estimator<a class="anchor-link" href="#Linear-Estimator">&#182;</a></h3>
+<h2 id="&#36801;&#31227;&#23398;&#20064;--RestNet50-finetune">&#36801;&#31227;&#23398;&#20064;--RestNet50 finetune<a class="anchor-link" href="#&#36801;&#31227;&#23398;&#20064;--RestNet50-finetune">&#182;</a></h2><h3 id="&#25968;&#25454;&#22686;&#24378;">&#25968;&#25454;&#22686;&#24378;<a class="anchor-link" href="#&#25968;&#25454;&#22686;&#24378;">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="c1"># 定义文件夹，保存输出的模型</span>
-<span class="n">linear_output_dir</span> <span class="o">=</span> <span class="s1">&#39;linear_model&#39;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">linear_output_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">linear_output_dir</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">linear_output_dir</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">linear_output_dir</span><span class="p">)</span>
-    
-<span class="n">linear_estimator</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">LinearClassifier</span><span class="p">(</span>
-    <span class="n">model_dir</span><span class="o">=</span><span class="n">linear_output_dir</span><span class="p">,</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
-    <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 将图片转化成同一尺寸</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">224</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">224</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># 读取图片并增强</span>
+<span class="n">train_datagen</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">ImageDataGenerator</span><span class="p">(</span>
+    <span class="n">preprocessing_function</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">resnet50</span><span class="o">.</span><span class="n">preprocess_input</span><span class="p">,</span>
+    <span class="n">rotation_range</span><span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="c1"># 旋转范围</span>
+    <span class="n">width_shift_range</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="c1"># 水平位移</span>
+    <span class="n">height_shift_range</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="c1"># 竖直平移</span>
+    <span class="n">shear_range</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="c1"># 剪切范围</span>
+    <span class="n">zoom_range</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="c1"># 缩放范围</span>
+    <span class="n">horizontal_flip</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># 随机水平翻转</span>
+    <span class="n">fill_mode</span><span class="o">=</span> <span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="c1"># 对空白位置的填充规则</span>
+<span class="p">)</span>
+<span class="n">train_generator</span> <span class="o">=</span> <span class="n">train_datagen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+    <span class="n">train_dir</span><span class="p">,</span> <span class="n">target_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">class_mode</span> <span class="o">=</span> <span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
+
+<span class="n">valid_datagen</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">ImageDataGenerator</span><span class="p">(</span>
+    <span class="n">preprocessing_function</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">resnet50</span><span class="o">.</span><span class="n">preprocess_input</span><span class="p">)</span>
+<span class="n">valid_generator</span> <span class="o">=</span> <span class="n">valid_datagen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+    <span class="n">valid_dir</span><span class="p">,</span> <span class="n">target_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">class_mode</span> <span class="o">=</span> <span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
+
+<span class="n">train_num</span> <span class="o">=</span> <span class="n">train_generator</span><span class="o">.</span><span class="n">samples</span>
+<span class="n">valid_num</span> <span class="o">=</span> <span class="n">valid_generator</span><span class="o">.</span><span class="n">samples</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_num</span><span class="p">,</span> <span class="n">valid_num</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13670,14 +13749,9 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: b
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Using default config.
-INFO:tensorflow:Using config: {&#39;_model_dir&#39;: &#39;linear_model&#39;, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_save_checkpoints_steps&#39;: None, &#39;_save_checkpoints_secs&#39;: 600, &#39;_session_config&#39;: allow_soft_placement: true
-graph_options {
-  rewrite_options {
-    meta_optimizer_iterations: ONE
-  }
-}
-, &#39;_keep_checkpoint_max&#39;: 5, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_log_step_count_steps&#39;: 100, &#39;_train_distribute&#39;: None, &#39;_device_fn&#39;: None, &#39;_protocol&#39;: None, &#39;_eval_distribute&#39;: None, &#39;_experimental_distribute&#39;: None, &#39;_service&#39;: None, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x7f0fc4212cc0&gt;, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_task_id&#39;: 0, &#39;_global_id_in_cluster&#39;: 0, &#39;_master&#39;: &#39;&#39;, &#39;_evaluation_master&#39;: &#39;&#39;, &#39;_is_chief&#39;: True, &#39;_num_ps_replicas&#39;: 0, &#39;_num_worker_replicas&#39;: 1}
+<pre>Found 1098 images belonging to 10 classes.
+Found 272 images belonging to 10 classes.
+1098 272
 </pre>
 </div>
 </div>
@@ -13688,11 +13762,13 @@ graph_options {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">linear_estimator</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">train_generator</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13709,142 +13785,17 @@ graph_options {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/ops/lookup_ops.py:1347: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
-Instructions for updating:
-Use `tf.cast` instead.
-WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column_v2.py:4307: IndicatorColumn._variable_shape (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column_v2.py:4362: VocabularyListCategoricalColumn._num_buckets (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Create CheckpointSaverHook.
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Saving checkpoints for 0 into linear_model/model.ckpt.
-INFO:tensorflow:loss = 0.6931472, step = 0
-INFO:tensorflow:global_step/sec: 164.314
-INFO:tensorflow:loss = 0.38683054, step = 100 (0.610 sec)
-INFO:tensorflow:global_step/sec: 232.357
-INFO:tensorflow:loss = 0.45852956, step = 200 (0.431 sec)
-INFO:tensorflow:global_step/sec: 238.923
-INFO:tensorflow:loss = 0.41034898, step = 300 (0.418 sec)
-INFO:tensorflow:global_step/sec: 238.063
-INFO:tensorflow:loss = 0.5409123, step = 400 (0.420 sec)
-INFO:tensorflow:global_step/sec: 238.336
-INFO:tensorflow:loss = 0.26440045, step = 500 (0.419 sec)
-INFO:tensorflow:global_step/sec: 235.96
-INFO:tensorflow:loss = 0.33119667, step = 600 (0.424 sec)
-INFO:tensorflow:global_step/sec: 225.931
-INFO:tensorflow:loss = 0.49856386, step = 700 (0.442 sec)
-INFO:tensorflow:global_step/sec: 235.386
-INFO:tensorflow:loss = 0.36081335, step = 800 (0.425 sec)
-INFO:tensorflow:global_step/sec: 233.818
-INFO:tensorflow:loss = 0.5236883, step = 900 (0.427 sec)
-INFO:tensorflow:global_step/sec: 222.964
-INFO:tensorflow:loss = 0.34469074, step = 1000 (0.449 sec)
-INFO:tensorflow:global_step/sec: 233.391
-INFO:tensorflow:loss = 0.40378848, step = 1100 (0.428 sec)
-INFO:tensorflow:global_step/sec: 237.038
-INFO:tensorflow:loss = 0.4174956, step = 1200 (0.422 sec)
-INFO:tensorflow:global_step/sec: 236.437
-INFO:tensorflow:loss = 0.26162475, step = 1300 (0.422 sec)
-INFO:tensorflow:global_step/sec: 235.88
-INFO:tensorflow:loss = 0.33216512, step = 1400 (0.424 sec)
-INFO:tensorflow:global_step/sec: 232.338
-INFO:tensorflow:loss = 0.44482857, step = 1500 (0.430 sec)
-INFO:tensorflow:global_step/sec: 241.203
-INFO:tensorflow:loss = 0.27961075, step = 1600 (0.415 sec)
-INFO:tensorflow:global_step/sec: 233.801
-INFO:tensorflow:loss = 0.36279163, step = 1700 (0.428 sec)
-INFO:tensorflow:global_step/sec: 233.951
-INFO:tensorflow:loss = 0.43807548, step = 1800 (0.431 sec)
-INFO:tensorflow:global_step/sec: 239.42
-INFO:tensorflow:loss = 0.40641236, step = 1900 (0.414 sec)
-INFO:tensorflow:Saving checkpoints for 1960 into linear_model/model.ckpt.
-INFO:tensorflow:Loss for final step: 0.39564562.
+<pre>(8, 224, 224, 3) (8, 10)
+[[0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]]
 </pre>
 </div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tensorflow_estimator.python.estimator.canned.linear.LinearClassifierV2 at 0x7f0fc4212e10&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">linear_estimator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Starting evaluation at 2020-02-07T15:51:10Z
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Restoring parameters from linear_model/model.ckpt-1960
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Finished evaluation at 2020-02-07-15:51:11
-INFO:tensorflow:Saving dict for global step 1960: accuracy = 0.77272725, accuracy_baseline = 0.625, auc = 0.83618003, auc_precision_recall = 0.7919357, average_loss = 0.49561542, global_step = 1960, label/mean = 0.375, loss = 0.4794259, precision = 0.67256635, prediction/mean = 0.4565581, recall = 0.7676768
-INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: linear_model/model.ckpt-1960
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[15]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;accuracy&#39;: 0.77272725,
- &#39;accuracy_baseline&#39;: 0.625,
- &#39;auc&#39;: 0.83618003,
- &#39;auc_precision_recall&#39;: 0.7919357,
- &#39;average_loss&#39;: 0.49561542,
- &#39;global_step&#39;: 1960,
- &#39;label/mean&#39;: 0.375,
- &#39;loss&#39;: 0.4794259,
- &#39;precision&#39;: 0.67256635,
- &#39;prediction/mean&#39;: 0.4565581,
- &#39;recall&#39;: 0.7676768}</pre>
-</div>
-
 </div>
 
 </div>
@@ -13854,31 +13805,43 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: l
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DNN-Estimator">DNN Estimator<a class="anchor-link" href="#DNN-Estimator">&#182;</a></h3>
+<h3 id="resnet50-finetune-&#27169;&#22411;&#26500;&#24314;">resnet50 finetune &#27169;&#22411;&#26500;&#24314;<a class="anchor-link" href="#resnet50-finetune-&#27169;&#22411;&#26500;&#24314;">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="c1"># 定义文件夹，保存输出的模型</span>
-<span class="n">dnn_output_dir</span> <span class="o">=</span> <span class="s1">&#39;dnn_model&#39;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-    
-<span class="n">dnn_estimator</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">DNNClassifier</span><span class="p">(</span>
-    <span class="n">model_dir</span><span class="o">=</span><span class="n">dnn_output_dir</span><span class="p">,</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
-    <span class="n">hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">],</span>
-    <span class="n">activation_fn</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resnet50_fine_tune</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">resnet50_fine_tune</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">ResNet50</span><span class="p">(</span>
+    <span class="n">include_top</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">pooling</span> <span class="o">=</span> <span class="s1">&#39;avg&#39;</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;imagenet&#39;</span><span class="p">))</span>
+<span class="n">resnet50_fine_tune</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+<span class="n">resnet50_fine_tune</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">trainable</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">resnet50_fine_tune</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="n">resnet50_fine_tune</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">history_resnet</span> <span class="o">=</span> <span class="n">resnet50_fine_tune</span><span class="o">.</span><span class="n">fit_generator</span><span class="p">(</span>
+    <span class="n">train_generator</span><span class="p">,</span>
+    <span class="n">steps_per_epoch</span><span class="o">=</span> <span class="n">train_num</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">valid_generator</span><span class="p">,</span>
+    <span class="n">validation_steps</span><span class="o">=</span> <span class="n">valid_num</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13895,14 +13858,7 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: l
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Using default config.
-INFO:tensorflow:Using config: {&#39;_model_dir&#39;: &#39;dnn_model&#39;, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_save_checkpoints_steps&#39;: None, &#39;_save_checkpoints_secs&#39;: 600, &#39;_session_config&#39;: allow_soft_placement: true
-graph_options {
-  rewrite_options {
-    meta_optimizer_iterations: ONE
-  }
-}
-, &#39;_keep_checkpoint_max&#39;: 5, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_log_step_count_steps&#39;: 100, &#39;_train_distribute&#39;: None, &#39;_device_fn&#39;: None, &#39;_protocol&#39;: None, &#39;_eval_distribute&#39;: None, &#39;_experimental_distribute&#39;: None, &#39;_service&#39;: None, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x7f10462e4748&gt;, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_task_id&#39;: 0, &#39;_global_id_in_cluster&#39;: 0, &#39;_master&#39;: &#39;&#39;, &#39;_evaluation_master&#39;: &#39;&#39;, &#39;_is_chief&#39;: True, &#39;_num_ps_replicas&#39;: 0, &#39;_num_worker_replicas&#39;: 1}
+<pre>Epoch 1/10
 </pre>
 </div>
 </div>
@@ -13913,159 +13869,14 @@ graph_options {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dnn_estimator</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_learning_curves</span><span class="p">(</span><span class="n">history_resnet</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot_learning_curves</span><span class="p">(</span><span class="n">history_resnet</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/ops/init_ops.py:1257: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
-Instructions for updating:
-Call initializer instance with the dtype argument instead of passing it to the constructor
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Create CheckpointSaverHook.
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Saving checkpoints for 0 into dnn_model/model.ckpt.
-INFO:tensorflow:loss = 2.5398145, step = 0
-INFO:tensorflow:global_step/sec: 178.35
-INFO:tensorflow:loss = 0.66123134, step = 100 (0.562 sec)
-INFO:tensorflow:global_step/sec: 241.721
-INFO:tensorflow:loss = 0.4623671, step = 200 (0.414 sec)
-INFO:tensorflow:global_step/sec: 235.946
-INFO:tensorflow:loss = 0.31149834, step = 300 (0.424 sec)
-INFO:tensorflow:global_step/sec: 217.333
-INFO:tensorflow:loss = 0.3449259, step = 400 (0.460 sec)
-INFO:tensorflow:global_step/sec: 240.293
-INFO:tensorflow:loss = 0.37727702, step = 500 (0.416 sec)
-INFO:tensorflow:global_step/sec: 244.324
-INFO:tensorflow:loss = 0.411375, step = 600 (0.409 sec)
-INFO:tensorflow:global_step/sec: 234.061
-INFO:tensorflow:loss = 0.19414066, step = 700 (0.427 sec)
-INFO:tensorflow:global_step/sec: 241.708
-INFO:tensorflow:loss = 0.34738123, step = 800 (0.415 sec)
-INFO:tensorflow:global_step/sec: 237.843
-INFO:tensorflow:loss = 0.41883415, step = 900 (0.421 sec)
-INFO:tensorflow:global_step/sec: 230.183
-INFO:tensorflow:loss = 0.48878777, step = 1000 (0.434 sec)
-INFO:tensorflow:global_step/sec: 240.144
-INFO:tensorflow:loss = 0.2756242, step = 1100 (0.416 sec)
-INFO:tensorflow:global_step/sec: 234.422
-INFO:tensorflow:loss = 0.54009044, step = 1200 (0.425 sec)
-INFO:tensorflow:global_step/sec: 211.874
-INFO:tensorflow:loss = 0.39561948, step = 1300 (0.474 sec)
-INFO:tensorflow:global_step/sec: 181.275
-INFO:tensorflow:loss = 0.33253646, step = 1400 (0.550 sec)
-INFO:tensorflow:global_step/sec: 204.541
-INFO:tensorflow:loss = 0.51587814, step = 1500 (0.491 sec)
-INFO:tensorflow:global_step/sec: 236.898
-INFO:tensorflow:loss = 0.37594175, step = 1600 (0.420 sec)
-INFO:tensorflow:global_step/sec: 231.262
-INFO:tensorflow:loss = 0.35540283, step = 1700 (0.432 sec)
-INFO:tensorflow:global_step/sec: 240.009
-INFO:tensorflow:loss = 0.43908873, step = 1800 (0.417 sec)
-INFO:tensorflow:global_step/sec: 234.543
-INFO:tensorflow:loss = 0.2089493, step = 1900 (0.426 sec)
-INFO:tensorflow:Saving checkpoints for 1960 into dnn_model/model.ckpt.
-INFO:tensorflow:Loss for final step: 0.32376218.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[17]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tensorflow_estimator.python.estimator.canned.dnn.DNNClassifierV2 at 0x7f10462e45c0&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dnn_estimator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Starting evaluation at 2020-02-07T15:51:42Z
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Restoring parameters from dnn_model/model.ckpt-1960
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Finished evaluation at 2020-02-07-15:51:43
-INFO:tensorflow:Saving dict for global step 1960: accuracy = 0.8030303, accuracy_baseline = 0.625, auc = 0.85561687, auc_precision_recall = 0.81294394, average_loss = 0.47788677, global_step = 1960, label/mean = 0.375, loss = 0.46174872, precision = 0.7196262, prediction/mean = 0.40425703, recall = 0.7777778
-INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: dnn_model/model.ckpt-1960
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;accuracy&#39;: 0.8030303,
- &#39;accuracy_baseline&#39;: 0.625,
- &#39;auc&#39;: 0.85561687,
- &#39;auc_precision_recall&#39;: 0.81294394,
- &#39;average_loss&#39;: 0.47788677,
- &#39;global_step&#39;: 1960,
- &#39;label/mean&#39;: 0.375,
- &#39;loss&#39;: 0.46174872,
- &#39;precision&#39;: 0.7196262,
- &#39;prediction/mean&#39;: 0.40425703,
- &#39;recall&#39;: 0.7777778}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -14073,23 +13884,18 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: d
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#20132;&#21449;&#29305;&#24449;">&#20132;&#21449;&#29305;&#24449;<a class="anchor-link" href="#&#20132;&#21449;&#29305;&#24449;">&#182;</a></h2><p>cross feature：对两个离散特征做笛卡尔积</p>
-<p>Eg：</p>
-<p>age:[1,2,3,4,5], gender:[male, female]</p>
-<p>age_x_gender:[(1,male),...,(5,male), (1,male),...,(5,female)]</p>
-<p>100000:100 -&gt; hash(100000 values) % 100</p>
-
+<h2 id="&#21478;&#19968;&#31181;resnet50-finetune&#65292;&#23545;resnet&#26368;&#21518;&#20960;&#23618;&#36827;&#34892;&#35757;&#32451;">&#21478;&#19968;&#31181;resnet50 finetune&#65292;&#23545;resnet&#26368;&#21518;&#20960;&#23618;&#36827;&#34892;&#35757;&#32451;<a class="anchor-link" href="#&#21478;&#19968;&#31181;resnet50-finetune&#65292;&#23545;resnet&#26368;&#21518;&#20960;&#23618;&#36827;&#34892;&#35757;&#32451;">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tf.feature_column.crossed_column 定义交叉特征</span>
-<span class="n">feature_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">indicator_column</span><span class="p">(</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">feature_column</span><span class="o">.</span><span class="n">crossed_column</span><span class="p">([</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">],</span> <span class="n">hash_bucket_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resnet50</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">ResNet50</span><span class="p">(</span>
+    <span class="n">include_top</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">pooling</span> <span class="o">=</span> <span class="s1">&#39;avg&#39;</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;imagenet&#39;</span><span class="p">)</span>
+<span class="n">resnet50</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14099,212 +13905,55 @@ INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: d
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="c1"># 定义文件夹，保存输出的模型</span>
-<span class="n">dnn_output_dir</span> <span class="o">=</span> <span class="s1">&#39;dnn_model_new_feature&#39;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dnn_output_dir</span><span class="p">)</span>
-    
-<span class="n">dnn_estimator_new</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">DNNClassifier</span><span class="p">(</span>
-    <span class="n">model_dir</span><span class="o">=</span><span class="n">dnn_output_dir</span><span class="p">,</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
-    <span class="n">hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">],</span>
-    <span class="n">activation_fn</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">resnet50</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">trainable</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">resnet50_new</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">resnet50</span><span class="p">,</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">resnet50_new</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="n">resnet50_new</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Using default config.
-INFO:tensorflow:Using config: {&#39;_model_dir&#39;: &#39;dnn_model_new_feature&#39;, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_save_checkpoints_steps&#39;: None, &#39;_save_checkpoints_secs&#39;: 600, &#39;_session_config&#39;: allow_soft_placement: true
-graph_options {
-  rewrite_options {
-    meta_optimizer_iterations: ONE
-  }
-}
-, &#39;_keep_checkpoint_max&#39;: 5, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_log_step_count_steps&#39;: 100, &#39;_train_distribute&#39;: None, &#39;_device_fn&#39;: None, &#39;_protocol&#39;: None, &#39;_eval_distribute&#39;: None, &#39;_experimental_distribute&#39;: None, &#39;_service&#39;: None, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x7f1046100080&gt;, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_task_id&#39;: 0, &#39;_global_id_in_cluster&#39;: 0, &#39;_master&#39;: &#39;&#39;, &#39;_evaluation_master&#39;: &#39;&#39;, &#39;_is_chief&#39;: True, &#39;_num_ps_replicas&#39;: 0, &#39;_num_worker_replicas&#39;: 1}
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dnn_estimator_new</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">history_resnet_new</span> <span class="o">=</span> <span class="n">resnet50_new</span><span class="o">.</span><span class="n">fit_generator</span><span class="p">(</span>
+    <span class="n">train_generator</span><span class="p">,</span>
+    <span class="n">steps_per_epoch</span><span class="o">=</span> <span class="n">train_num</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">valid_generator</span><span class="p">,</span>
+    <span class="n">validation_steps</span><span class="o">=</span> <span class="n">valid_num</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column_v2.py:4362: CrossedColumn._num_buckets (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed in a future version.
-Instructions for updating:
-The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Create CheckpointSaverHook.
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Saving checkpoints for 0 into dnn_model_new_feature/model.ckpt.
-INFO:tensorflow:loss = 0.91685367, step = 0
-INFO:tensorflow:global_step/sec: 171.815
-INFO:tensorflow:loss = 0.5104016, step = 100 (0.583 sec)
-INFO:tensorflow:global_step/sec: 234.375
-INFO:tensorflow:loss = 0.37417728, step = 200 (0.427 sec)
-INFO:tensorflow:global_step/sec: 229.51
-INFO:tensorflow:loss = 0.45953017, step = 300 (0.437 sec)
-INFO:tensorflow:global_step/sec: 233.944
-INFO:tensorflow:loss = 0.43136257, step = 400 (0.426 sec)
-INFO:tensorflow:global_step/sec: 217.871
-INFO:tensorflow:loss = 0.44988418, step = 500 (0.459 sec)
-INFO:tensorflow:global_step/sec: 234.018
-INFO:tensorflow:loss = 0.28513223, step = 600 (0.427 sec)
-INFO:tensorflow:global_step/sec: 227.198
-INFO:tensorflow:loss = 0.4765982, step = 700 (0.440 sec)
-INFO:tensorflow:global_step/sec: 232.409
-INFO:tensorflow:loss = 0.29325318, step = 800 (0.430 sec)
-INFO:tensorflow:global_step/sec: 235.184
-INFO:tensorflow:loss = 0.19460596, step = 900 (0.425 sec)
-INFO:tensorflow:global_step/sec: 219.606
-INFO:tensorflow:loss = 0.27315086, step = 1000 (0.455 sec)
-INFO:tensorflow:global_step/sec: 235.392
-INFO:tensorflow:loss = 0.14662, step = 1100 (0.425 sec)
-INFO:tensorflow:global_step/sec: 229.76
-INFO:tensorflow:loss = 0.35847688, step = 1200 (0.435 sec)
-INFO:tensorflow:global_step/sec: 233.543
-INFO:tensorflow:loss = 0.22532228, step = 1300 (0.428 sec)
-INFO:tensorflow:global_step/sec: 237.686
-INFO:tensorflow:loss = 0.10095565, step = 1400 (0.421 sec)
-INFO:tensorflow:global_step/sec: 233.609
-INFO:tensorflow:loss = 0.07696232, step = 1500 (0.428 sec)
-INFO:tensorflow:global_step/sec: 235.968
-INFO:tensorflow:loss = 0.20336756, step = 1600 (0.426 sec)
-INFO:tensorflow:global_step/sec: 223.262
-INFO:tensorflow:loss = 0.12940109, step = 1700 (0.446 sec)
-INFO:tensorflow:global_step/sec: 229.541
-INFO:tensorflow:loss = 0.27732185, step = 1800 (0.435 sec)
-INFO:tensorflow:global_step/sec: 229.871
-INFO:tensorflow:loss = 0.1381757, step = 1900 (0.435 sec)
-INFO:tensorflow:Saving checkpoints for 1960 into dnn_model_new_feature/model.ckpt.
-INFO:tensorflow:Loss for final step: 0.056624368.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[21]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tensorflow_estimator.python.estimator.canned.dnn.DNNClassifierV2 at 0x7f1046105e48&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dnn_estimator_new</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-    <span class="n">input_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_learning_curves</span><span class="p">(</span><span class="n">history_resnet_new</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot_learning_curves</span><span class="p">(</span><span class="n">history_resnet_new</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Calling model_fn.
-INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Starting evaluation at 2020-02-07T15:52:19Z
-INFO:tensorflow:Graph was finalized.
-INFO:tensorflow:Restoring parameters from dnn_model_new_feature/model.ckpt-1960
-INFO:tensorflow:Running local_init_op.
-INFO:tensorflow:Done running local_init_op.
-INFO:tensorflow:Finished evaluation at 2020-02-07-15:52:20
-INFO:tensorflow:Saving dict for global step 1960: accuracy = 0.8030303, accuracy_baseline = 0.625, auc = 0.8413529, auc_precision_recall = 0.78737986, average_loss = 0.65251297, global_step = 1960, label/mean = 0.375, loss = 0.610228, precision = 0.742268, prediction/mean = 0.38915005, recall = 0.72727275
-INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: dnn_model_new_feature/model.ckpt-1960
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[22]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;accuracy&#39;: 0.8030303,
- &#39;accuracy_baseline&#39;: 0.625,
- &#39;auc&#39;: 0.8413529,
- &#39;auc_precision_recall&#39;: 0.78737986,
- &#39;average_loss&#39;: 0.65251297,
- &#39;global_step&#39;: 1960,
- &#39;label/mean&#39;: 0.375,
- &#39;loss&#39;: 0.610228,
- &#39;precision&#39;: 0.742268,
- &#39;prediction/mean&#39;: 0.38915005,
- &#39;recall&#39;: 0.72727275}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 

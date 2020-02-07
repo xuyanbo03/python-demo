@@ -13097,7 +13097,7 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="k">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">)</span>
@@ -13120,11 +13120,11 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>1.13.1
-sys.version_info(major=3, minor=6, micro=8, releaselevel=&#39;final&#39;, serial=0)
-matplotlib 3.1.3
-numpy 1.16.4
-pandas 0.24.2
-sklearn 0.22.1
+sys.version_info(major=3, minor=6, micro=4, releaselevel=&#39;final&#39;, serial=0)
+matplotlib 2.2.3
+numpy 1.16.2
+pandas 0.22.0
+sklearn 0.19.1
 tensorflow 1.13.1
 tensorflow._api.v1.keras 2.2.4-tf
 </pre>
@@ -13144,7 +13144,7 @@ tensorflow._api.v1.keras 2.2.4-tf
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_file</span> <span class="o">=</span> <span class="s1">&#39;data/titanic/train.csv&#39;</span>
@@ -13207,7 +13207,7 @@ tensorflow._api.v1.keras 2.2.4-tf
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 将survived字段取出，赋给label</span>
@@ -13282,7 +13282,7 @@ Name: survived, dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 将数据分成两类：离散和连续</span>
@@ -13337,7 +13337,7 @@ alone [&#39;n&#39; &#39;y&#39;]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 从pandas dataframe中构建dataset</span>
@@ -13363,7 +13363,7 @@ alone [&#39;n&#39; &#39;y&#39;]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;customized_estimator&#39;</span>
@@ -13417,7 +13417,7 @@ alone [&#39;n&#39; &#39;y&#39;]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 使用定义的函数自定义estimator</span>
@@ -13437,10 +13437,135 @@ alone [&#39;n&#39; &#39;y&#39;]
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>INFO:tensorflow:Using default config.
+INFO:tensorflow:Using config: {&#39;_model_dir&#39;: &#39;customized_estimator&#39;, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_save_checkpoints_steps&#39;: None, &#39;_save_checkpoints_secs&#39;: 600, &#39;_session_config&#39;: allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, &#39;_keep_checkpoint_max&#39;: 5, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_log_step_count_steps&#39;: 100, &#39;_train_distribute&#39;: None, &#39;_device_fn&#39;: None, &#39;_protocol&#39;: None, &#39;_eval_distribute&#39;: None, &#39;_experimental_distribute&#39;: None, &#39;_service&#39;: None, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x7fdb36af7898&gt;, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_task_id&#39;: 0, &#39;_global_id_in_cluster&#39;: 0, &#39;_master&#39;: &#39;&#39;, &#39;_evaluation_master&#39;: &#39;&#39;, &#39;_is_chief&#39;: True, &#39;_num_ps_replicas&#39;: 0, &#39;_num_worker_replicas&#39;: 1}
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:tensorflow:Calling model_fn.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column.py:205: NumericColumn._get_dense_tensor (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column.py:2121: NumericColumn._transform_feature (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column_v2.py:2703: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column.py:206: NumericColumn._variable_shape (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column.py:205: IndicatorColumn._get_dense_tensor (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column.py:2121: IndicatorColumn._transform_feature (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column_v2.py:4295: VocabularyListCategoricalColumn._get_sparse_tensors (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column.py:2121: VocabularyListCategoricalColumn._transform_feature (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/ops/lookup_ops.py:1137: to_int64 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column_v2.py:4266: IndicatorColumn._variable_shape (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/feature_column/feature_column_v2.py:4321: VocabularyListCategoricalColumn._num_buckets (from tensorflow.python.feature_column.feature_column_v2) is deprecated and will be removed after 2018-11-30.
+Instructions for updating:
+The old _FeatureColumn APIs are being deprecated. Please use the new FeatureColumn APIs instead.
+WARNING:tensorflow:From &lt;ipython-input-7-0c6ccbe3f8b6&gt;:13: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+INFO:tensorflow:Done calling model_fn.
+INFO:tensorflow:Create CheckpointSaverHook.
+INFO:tensorflow:Graph was finalized.
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Saving checkpoints for 0 into customized_estimator/model.ckpt.
+INFO:tensorflow:loss = 1.3071299, step = 0
+INFO:tensorflow:global_step/sec: 245.894
+INFO:tensorflow:loss = 0.48425955, step = 100 (0.408 sec)
+INFO:tensorflow:global_step/sec: 329.592
+INFO:tensorflow:loss = 0.55831015, step = 200 (0.303 sec)
+INFO:tensorflow:global_step/sec: 331.119
+INFO:tensorflow:loss = 0.5708145, step = 300 (0.304 sec)
+INFO:tensorflow:global_step/sec: 338.001
+INFO:tensorflow:loss = 0.37386686, step = 400 (0.294 sec)
+INFO:tensorflow:global_step/sec: 328.633
+INFO:tensorflow:loss = 0.31370935, step = 500 (0.304 sec)
+INFO:tensorflow:global_step/sec: 337.292
+INFO:tensorflow:loss = 0.24561787, step = 600 (0.296 sec)
+INFO:tensorflow:global_step/sec: 332.143
+INFO:tensorflow:loss = 0.39784604, step = 700 (0.301 sec)
+INFO:tensorflow:global_step/sec: 328.185
+INFO:tensorflow:loss = 0.5475549, step = 800 (0.306 sec)
+INFO:tensorflow:global_step/sec: 334.18
+INFO:tensorflow:loss = 0.49038672, step = 900 (0.298 sec)
+INFO:tensorflow:global_step/sec: 312.21
+INFO:tensorflow:loss = 0.24679664, step = 1000 (0.320 sec)
+INFO:tensorflow:global_step/sec: 323.758
+INFO:tensorflow:loss = 0.48531774, step = 1100 (0.309 sec)
+INFO:tensorflow:global_step/sec: 323.186
+INFO:tensorflow:loss = 0.35774, step = 1200 (0.311 sec)
+INFO:tensorflow:global_step/sec: 330.6
+INFO:tensorflow:loss = 0.31498316, step = 1300 (0.301 sec)
+INFO:tensorflow:global_step/sec: 327.487
+INFO:tensorflow:loss = 0.38564783, step = 1400 (0.306 sec)
+INFO:tensorflow:global_step/sec: 313.389
+INFO:tensorflow:loss = 0.3783471, step = 1500 (0.319 sec)
+INFO:tensorflow:global_step/sec: 330.789
+INFO:tensorflow:loss = 0.208392, step = 1600 (0.302 sec)
+INFO:tensorflow:global_step/sec: 336.623
+INFO:tensorflow:loss = 0.3715057, step = 1700 (0.299 sec)
+INFO:tensorflow:global_step/sec: 339.639
+INFO:tensorflow:loss = 0.49013346, step = 1800 (0.293 sec)
+INFO:tensorflow:global_step/sec: 343.029
+INFO:tensorflow:loss = 0.48774076, step = 1900 (0.291 sec)
+INFO:tensorflow:Saving checkpoints for 1960 into customized_estimator/model.ckpt.
+INFO:tensorflow:Loss for final step: 0.23161016.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tensorflow_estimator.python.estimator.estimator.Estimator at 0x7fdb36af76d8&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">estimator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
@@ -13462,14 +13587,32 @@ alone [&#39;n&#39; &#39;y&#39;]
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>INFO:tensorflow:Calling model_fn.
 INFO:tensorflow:Done calling model_fn.
-INFO:tensorflow:Starting evaluation at 2020-02-05T17:38:30Z
+INFO:tensorflow:Starting evaluation at 2020-02-07T15:34:47Z
 INFO:tensorflow:Graph was finalized.
-WARNING:tensorflow:From f:\condaenv\tfgpu\lib\site-packages\tensorflow\python\training\saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/ma-user/anaconda3/envs/TensorFlow-1.13.1/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use standard file APIs to check for files with this prefix.
-INFO:tensorflow:Restoring parameters from customized_estimator\model.ckpt-0
+INFO:tensorflow:Restoring parameters from customized_estimator/model.ckpt-1960
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Finished evaluation at 2020-02-07-15:34:47
+INFO:tensorflow:Saving dict for global step 1960: accuracy = 0.780303, global_step = 1960, loss = 0.5266627
+INFO:tensorflow:Saving &#39;checkpoint_path&#39; summary for global step 1960: customized_estimator/model.ckpt-1960
 </pre>
 </div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;accuracy&#39;: 0.780303, &#39;global_step&#39;: 1960, &#39;loss&#39;: 0.5266627}</pre>
+</div>
+
 </div>
 
 </div>
