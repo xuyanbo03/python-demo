@@ -4,6 +4,14 @@
 
 **技术栈：pygame**
 
+- [x] 游戏框架搭建
+- [x] 游戏背景
+- [x] 敌机出场
+- [x] 英雄登场
+- [x] 碰撞检测
+
+<br />
+
 
 
 ## 2.Python spider
@@ -17,6 +25,8 @@
   - 房天下全站分布式爬取
   - 简书全站爬取
 
+<br />
+
 
 
 ## 3.Python Data Analysis
@@ -29,6 +39,8 @@
 - [x] 机器学习建模
 - [x] 模型评估
 
+<br />
+
 
 
 ## 4.TensorFlow2.0 DeepLearning
@@ -38,5 +50,26 @@
 - [x] tf.keras构建模型
 - [x] tf  API
 - [x] tf.data  API
-- [ ] tf.estimator
+- [x] tf.estimator
+- [x] tf构建CNN
+- [x] tf构建RNN
+- [x] tf构建LSTM
+- [x] GPU实践
+- [x] 分布式训练
+- [x] 模型保存
+- [x] seq2seq模型搭建
+- [x] transformer模型搭建
+
+<br />
+
+
+
+## 5.AI Food 华为云图形分类入门赛（PyTorch版）
+
+**技术栈：PyTorch**
+
+- [x] baseline
+- [x] pytorch改进
+
+<br />
 
